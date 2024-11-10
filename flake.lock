@@ -1053,6 +1053,22 @@
         "type": "github"
       }
     },
+    "plugin-neopywal": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723226430,
+        "narHash": "sha256-P28gg5fPPPyhepPHOZFgMnGTToCXK+v4ev6oTRSZXtg=",
+        "owner": "RedsXDD",
+        "repo": "neopywal.nvim",
+        "rev": "2d65d138463bbbe9d824b9bc1048ef1888017da6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "RedsXDD",
+        "repo": "neopywal.nvim",
+        "type": "github"
+      }
+    },
     "plugin-new-file-template-nvim": {
       "flake": false,
       "locked": {
@@ -1941,7 +1957,8 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "nvf": "nvf"
+        "nvf": "nvf",
+        "plugin-neopywal": "plugin-neopywal"
       }
     },
     "rust-overlay": {
