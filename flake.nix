@@ -18,20 +18,47 @@
     configModule = {
       config.vim = {
         theme.enable = false;
+        autocomplete.enable = true;
+        autopairs.enable = true;
+        lsp = {
+          enable = true;
+          lightbulb.enable = true;
+          lspSignature.enable = true;
+          lspconfig.enable = true;
+          lspkind.enable = true;
+          lsplines.enable = true;
+        }; 
         languages = {
+          enableLSP = true;
+          enableExtraDiagnostics = true;
+          enableFormat = true;
+          enableTreesitter = true;
+
           nix.enable = true;
+          clang.enable = true; # C/C++
+          ts.enable = true; # JS/TS
+          markdown.enable = true;
+          html.enable = true;
+          lua.enable = true;
+          bash.enable = true;
+          css.enable = true;
+          elixir.enable = true;
         };
+        
+        leaderKey = " ";
+        lineNumberMode = "relative";
+
         #startPlugins = ["neopywal"];
         luaConfigRC = {
           globalsScript = ''
-            vim.g.mapleader = " " -- Set leader to space
+            --vim.g.mapleader = " " -- Set leader to space
           '';
           optionsScript = ''
             vim.opt.wrap = false
             vim.opt.clipboard = "unnamedplus" -- External clipboard support
             vim.opt.number = true
             vim.opt.laststatus = 0 -- Never show status line
-            vim.opt.relativenumber = true
+            --vim.opt.relativenumber = true
             vim.opt.mouse = ""
 
             -- Tab config
