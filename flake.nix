@@ -20,6 +20,10 @@
         theme.enable = false;
         autocomplete.enable = true;
         autopairs.enable = true;
+        visuals = {
+          enable = true;
+          indentBlankline.enable = true;
+        };
         lsp = {
           enable = true;
           lightbulb.enable = true;
