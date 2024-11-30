@@ -21,7 +21,7 @@
         autocomplete.enable = true;
         autopairs.enable = true;
         visuals = {
-          enable = true;
+          enable = true; # Will be deprecated in 0.7
           indentBlankline.enable = true;
         };
         lsp = {
