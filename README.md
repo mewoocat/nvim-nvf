@@ -1,14 +1,10 @@
-My nvim config
+My personal nvim config
 
 # Overview
----
 - Packaged as a Nix Flake
 - Made using nvf https://github.com/NotAShelf/nvf
 
-
 # Installation 
----
-
 ### NixOS Flake
 Add this repo to the flake inputs,
 ```
