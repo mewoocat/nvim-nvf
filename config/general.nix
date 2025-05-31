@@ -4,6 +4,11 @@
     theme.enable = false;
     autocomplete.enable = true;
     autopairs.enable = true;
+    treesitter = {
+      grammars = with pkgs; [
+        vimPlugins.nvim-treesitter-parsers.qmljs
+      ];
+    };
     visuals = {
       enable = true; # Will be deprecated in 0.7
       indentBlankline.enable = true;
@@ -54,6 +59,11 @@
         vim.opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
         vim.opt.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
         vim.opt.shiftwidth = 4 -- Number of spaces inserted when indenting
+
+        -- QML lsp setup
+        require("lspconfig").qmlls.setup {
+          cmd = {"${pkgs.qt6.qtdeclarative}/bin/qmlls", "-E"}
+        }
       '';
 
       basic = ''
@@ -68,6 +78,8 @@
     };
 
     extraPlugins = with pkgs.vimPlugins; {   
+
+
 
       fwatch = {
         package = fwatch-nvim;
