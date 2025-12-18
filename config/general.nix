@@ -1,28 +1,30 @@
 {pkgs, ...}: {
 # Configure nvim
   config.vim = {
-    theme.enable = false;
-    autocomplete.enable = true;
-    autopairs.enable = true;
+    autocomplete.nvim-cmp.enable = true;
+    autopairs.nvim-autopairs.enable = true;
     treesitter = {
       grammars = with pkgs; [
         vimPlugins.nvim-treesitter-parsers.qmljs
       ];
     };
     visuals = {
-      enable = true; # Will be deprecated in 0.7
-      indentBlankline.enable = true;
+      indent-blankline.enable = true;
+    };
+    theme = {
+      enable = true;
+      name = "oxocarbon";
+      style = "dark";
     };
     lsp = {
       enable = true;
       lspSignature.enable = true;
       lspconfig.enable = true;
-      lspkind.enable = true;
+      #lspkind.enable = true;
       #lightbulb.enable = true;
       #lsplines.enable = true;
     }; 
     languages = {
-      enableLSP = true;
       enableExtraDiagnostics = true;
       enableFormat = true;
       enableTreesitter = true;
@@ -38,7 +40,10 @@
       elixir.enable = true;
     };
     
-    leaderKey = " "; # Set leader to space
+    globals = {
+      leaderKey = " "; # Set leader to space
+    };
+
     lineNumberMode = "relative";
 
     #startPlugins = ["neopywal"];
@@ -61,7 +66,7 @@
         vim.opt.shiftwidth = 4 -- Number of spaces inserted when indenting
 
         -- QML lsp setup
-        require("lspconfig").qmlls.setup {
+        vim.lsp.config['qmlls'] = {
           cmd = {"${pkgs.qt6.qtdeclarative}/bin/qmlls", "-E"}
         }
       '';
@@ -85,13 +90,15 @@
         package = fwatch-nvim;
       };
 
+      # build error
+      /*
       neopywal = {
         package = pkgs.vimUtils.buildVimPlugin {
           pname = "neopywal"; version = "";
           src = builtins.fetchGit {
             url = "https://github.com/RedsXDD/neopywal.nvim.git";
             ref = "master";
-            rev = "57fb800ccc1c2dd2f6623b82ef3612927a36fd4a";
+            rev = "09188d79b45694141ec779d05cbcc75f994639d1";
           };
         };
         setup = ''
@@ -210,6 +217,7 @@
           end
         '';
       };
+      */
 
       web-devicons = {
         package = nvim-web-devicons;
@@ -236,6 +244,7 @@
       };
       lualine = {
         package = lualine-nvim;
+        /*
         setup = ''
           require('lualine').setup {
             options = {
@@ -279,6 +288,7 @@
             extensions = {}
           }
         '';
+        */
       };
     };
   };
