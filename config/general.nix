@@ -69,6 +69,7 @@
     
     globals = {
       leaderKey = " "; # Set leader to space
+      hideSearchHighlight = true;
     };
 
     lineNumberMode = "relative";
@@ -77,7 +78,7 @@
       neo-tree = {
         enable = true;
         setupOpts = {
-          
+          close_if_last_window = true;
         };
       };
     };
@@ -87,6 +88,10 @@
       normal = {
           "<leader>e".action =":Neotree toggle right<cr>"; # Note the ":" is used to invoke the command
       };
+    };
+
+    git = {
+      enable = true;
     };
 
     #startPlugins = ["neopywal"];
