@@ -1,5 +1,5 @@
 {...}: {
   imports = [
-    ./neo-tree.nix
+    #./neo-tree.nix
   ];
 }

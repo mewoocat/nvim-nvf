@@ -3,6 +3,25 @@
   config.vim = {
     autocomplete.nvim-cmp.enable = true;
     autopairs.nvim-autopairs.enable = true;
+    binds.cheatsheet.enable = true; # idk what keybind triggers this
+
+    dashboard = {
+      alpha = {
+        enable = true;
+      };
+    };
+
+    debugger = {
+      nvim-dap = {
+        enable = true;
+        ui.enable = true;
+      };
+    };
+
+    diagnostics = {
+
+    };
+
     treesitter = {
       grammars = with pkgs; [
         vimPlugins.nvim-treesitter-parsers.qmljs
@@ -39,6 +58,14 @@
       css.enable = true;
       elixir.enable = true;
     };
+
+    clipboard = {
+      enable = true;
+      providers = {
+        wl-copy.enable = true;
+      };
+      registers = "unnamedplus"; # To Always use the system clipboard
+    };
     
     globals = {
       leaderKey = " "; # Set leader to space
@@ -46,45 +73,49 @@
 
     lineNumberMode = "relative";
 
+    filetree = {
+      neo-tree = {
+        enable = true;
+        setupOpts = {
+          
+        };
+      };
+    };
+
+    # Key mapping
+    maps = {
+      normal = {
+          "<leader>e".action =":Neotree toggle right<cr>"; # Note the ":" is used to invoke the command
+      };
+    };
+
     #startPlugins = ["neopywal"];
     luaConfigRC = {
       globalsScript = ''
         --vim.g.mapleader = " " -- Set leader to space
       '';
       optionsScript = ''
-        vim.opt.wrap = false
-        vim.opt.clipboard = "unnamedplus" -- External clipboard support
-        vim.opt.number = true
-        vim.opt.laststatus = 0 -- Never show status line
+        --vim.opt.wrap = false
+        --vim.opt.clipboard = "unnamedplus" -- External clipboard support
+        --vim.opt.number = true
+        --vim.opt.laststatus = 0 -- Never show status line
         --vim.opt.relativenumber = true
-        vim.opt.mouse = ""
+        --vim.opt.mouse = ""
 
         -- Tab config
-        vim.opt.tabstop = 4 -- A TAB character looks like 2 spaces
-        vim.opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
-        vim.opt.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
-        vim.opt.shiftwidth = 4 -- Number of spaces inserted when indenting
+        --vim.opt.tabstop = 4 -- A TAB character looks like 2 spaces
+        --vim.opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+        --vim.opt.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+        --vim.opt.shiftwidth = 4 -- Number of spaces inserted when indenting
 
         -- QML lsp setup
         vim.lsp.config['qmlls'] = {
           cmd = {"${pkgs.qt6.qtdeclarative}/bin/qmlls", "-E"}
         }
       '';
-
-      basic = ''
-      '';
-
-      /*
-      theme = ''
-
-      '';
-      */
-
     };
 
     extraPlugins = with pkgs.vimPlugins; {   
-
-
 
       fwatch = {
         package = fwatch-nvim;
