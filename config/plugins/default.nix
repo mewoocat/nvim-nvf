@@ -1,5 +1,6 @@
 {...}: {
   imports = [
-    #./neo-tree.nix
+    ./neopywal.nix
+    #./pixel.nvim.nix
   ];
 }
