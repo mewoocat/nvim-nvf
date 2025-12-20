@@ -3,7 +3,13 @@
   config.vim = {
     autocomplete.nvim-cmp.enable = true;
     autopairs.nvim-autopairs.enable = true;
-    binds.cheatsheet.enable = true; # idk what keybind triggers this
+
+    binds = {
+      # Keybind helper & cheatsheet
+      whichKey = {
+        enable = true;
+      };
+    };
 
     dashboard = {
       alpha = {
@@ -31,7 +37,7 @@
       indent-blankline.enable = true;
     };
     theme = {
-      enable = true;
+      enable = false;
       name = "oxocarbon";
       style = "dark";
     };
@@ -39,10 +45,16 @@
       enable = true;
       lspSignature.enable = true;
       lspconfig.enable = true;
-      #lspkind.enable = true;
-      #lightbulb.enable = true;
-      #lsplines.enable = true;
+      inlayHints.enable = true;
+      lspkind.enable = true;
+      lightbulb.enable = true;
+      nvim-docs-view.enable = true;
     }; 
+
+    minimap = {
+      codewindow.enable = true; # <leader>mm toggles
+    };
+
     languages = {
       enableExtraDiagnostics = true;
       enableFormat = true;
@@ -57,6 +69,10 @@
       bash.enable = true;
       css.enable = true;
       elixir.enable = true;
+      csharp.enable = true;
+      json.enable = true;
+      qml.enable = true;
+      yaml.enable = true;
     };
 
     clipboard = {
@@ -68,11 +84,44 @@
     };
     
     globals = {
-      leaderKey = " "; # Set leader to space
-      hideSearchHighlight = true;
+      mapLeader = " "; # Set leader to space
     };
 
+    hideSearchHighlight = true;
     lineNumberMode = "relative";
+    searchCase = "ignore";
+    spellcheck.enable = true;
+    syntaxHighlighting = true; # investigate
+
+    statusline = {
+      lualine = {
+        enable = true;
+      };
+    };
+
+    telescope = {
+      enable = true;
+      setupOpts = {
+        pickers = {
+          buffers = {
+            sort_lastused = true;
+            sort_mru = true;
+            ignore_current_buffer = true;
+          };
+        };
+      };
+      extensions = [
+        {
+          name = "fzf";
+          packages = [pkgs.vimPlugins.telescope-fzf-native-nvim];
+          setup = {
+            fzf = {
+              fuzzy = true;
+            };
+          };
+        }
+      ];
+    };
 
     filetree = {
       neo-tree = {
@@ -89,9 +138,35 @@
           "<leader>e".action =":Neotree toggle right<cr>"; # Note the ":" is used to invoke the command
       };
     };
+    # There's also vim.keymaps
+    /*
+    vim.keymaps = [
+    {
+      key = "<leader>m";
+      mode = "n";
+      silent = true;
+      action = ":make<CR>";
+    }
+    */
 
     git = {
       enable = true;
+    };
+
+    options = {
+      # Set indent size
+      shiftwidth = 2; # Number of spaces inserted when indenting
+      tabstop = 2; # A TAB character looks like 2 spaces
+      softtabstop = 2; # Number of spaces inserted instead of a TAB character
+      expandtab = true; # Pressing the TAB key will insert spaces instead of a TAB character
+
+      wrap = false;
+
+      termguicolors = false;
+    };
+
+    presence = {
+      neocord.enable = true;
     };
 
     #startPlugins = ["neopywal"];
@@ -126,15 +201,15 @@
         package = fwatch-nvim;
       };
 
-      # build error
-      /*
+      # test error
       neopywal = {
         package = pkgs.vimUtils.buildVimPlugin {
+          doCheck = false; # skip failing tests
           pname = "neopywal"; version = "";
           src = builtins.fetchGit {
             url = "https://github.com/RedsXDD/neopywal.nvim.git";
             ref = "master";
-            rev = "09188d79b45694141ec779d05cbcc75f994639d1";
+            rev = "57fb800ccc1c2dd2f6623b82ef3612927a36fd4a";
           };
         };
         setup = ''
@@ -170,12 +245,17 @@
 
                   -- This option allows to specify where Neopywal should look for a ".vim" template file
                   -- (e.g.: os.getenv("HOME") .. "/.cache/wal/custom_neopywal_template.vim").
-                  colorscheme_file = "",
+                  colorscheme_file = os.getenv("HOME") .. "/.cache/wallust/colors_neopywal.vim",
 
                   -- This option allows to use a custom built-in theme palettes like "catppuccin-mocha" or "tokyonight".
                   -- To get the list of available themes take a look at `https://github.com/RedsXDD/neopywal.nvim#Alternative-Palettes`.
                   -- Take note that this option takes precedence over `use_wallust` and `colorscheme_file`.
+                  
                   use_palette = "",
+                  --use_palette = {
+                  --  light = "wallust",
+                  --  dark = "wallust",
+                  --},
 
                   -- Sets the background color of certain highlight groups to be transparent.
                   -- Use this when your terminal opacity is < 1.
@@ -253,6 +333,22 @@
           end
         '';
       };
+
+      # Doesn't seem to have any effect
+      /*
+      pixel = {
+        package = pkgs.vimUtils.buildVimPlugin {
+          pname = "pixel.nvim"; version = "";
+          src = builtins.fetchGit {
+            url = "https://github.com/bjarneo/pixel.nvim.git";
+            ref = "main";
+            rev = "11f800e8253fdb079f9de66c10ebdfec95782891";
+          };
+        };
+        setup = ''
+          vim.cmd.colorscheme("pixel")
+        '';
+      };
       */
 
       web-devicons = {
@@ -260,6 +356,7 @@
         setup = '''';
       };
       
+      /*
       telescope = {
         package = telescope-nvim;
         setup = ''              
@@ -278,6 +375,7 @@
           vim.keymap.set('n', '<leader>p', telescope_builtin.buffers, {})
         '';
       };
+      */
       lualine = {
         package = lualine-nvim;
         /*
