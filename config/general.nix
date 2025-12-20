@@ -209,6 +209,9 @@
           src = builtins.fetchGit {
             url = "https://github.com/RedsXDD/neopywal.nvim.git";
             ref = "master";
+            # Note that updating to commit df179ff0697301164ec21215d9ab14e20bac18e9 or later
+            # will break this setup due to the removal of the use_wallust option
+            # See the commit message on df179ff0697301164ec21215d9ab14e20bac18e9 for more details
             rev = "57fb800ccc1c2dd2f6623b82ef3612927a36fd4a";
           };
         };
