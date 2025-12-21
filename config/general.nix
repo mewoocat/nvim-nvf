@@ -1,8 +1,42 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
 # Configure nvim
   config.vim = {
     autocomplete.nvim-cmp.enable = true;
     autopairs.nvim-autopairs.enable = true;
+
+    autocmds = [
+      {
+        desc = "Sets default indent";
+        event = ["BufEnter"];
+        pattern = null;
+        callback = lib.generators.mkLuaInline ''
+          function()
+            vim.opt.tabstop = 2
+            vim.opt.expandtab = true
+            vim.opt.softtabstop = 2
+            vim.opt.shiftwidth = 2
+          end
+        '';
+        once = true;
+      }
+      {
+        desc = "Sets indent for nix files";
+        event = ["BufEnter"];
+        pattern = [
+          "*.nix"
+          "*.md"
+        ];
+        callback = lib.generators.mkLuaInline ''
+          function()
+            vim.opt.tabstop = 4
+            vim.opt.expandtab = true
+            vim.opt.softtabstop = 4
+            vim.opt.shiftwidth = 4
+          end
+        '';
+        once = true;
+      }
+    ];
 
     binds = {
       # Keybind helper & cheatsheet
