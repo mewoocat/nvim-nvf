@@ -59,7 +59,12 @@
     };
 
     diagnostics = {
-
+      enable = true;
+      config = {
+        virtual_lines = false;
+        virtual_text = true;
+        underline = true;
+      };
     };
 
     treesitter = {
