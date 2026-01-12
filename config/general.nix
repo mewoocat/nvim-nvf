@@ -67,6 +67,10 @@
       };
     };
 
+    notify = {
+      nvim-notify.enable = true;
+    };
+
     treesitter = {
       grammars = with pkgs; [
         vimPlugins.nvim-treesitter-parsers.qmljs
@@ -75,13 +79,14 @@
 
     visuals = {
       indent-blankline.enable = true;
+      nvim-scrollbar.enable = true;
       nvim-web-devicons.enable = true;
     };
 
     theme = {
-      enable = false;
-      name = "oxocarbon";
-      style = "dark";
+      enable = true;
+      name = "rose-pine";
+      style = "moon";
     };
 
     lsp = {
@@ -130,10 +135,14 @@
       mapLeader = " "; # Set leader to space
     };
 
+
+    spellcheck = {
+      enable = true;
+    };
+
     hideSearchHighlight = true;
     lineNumberMode = "relative";
     searchCase = "ignore";
-    spellcheck.enable = true;
     syntaxHighlighting = true; # investigate
 
     statusline = {
@@ -207,14 +216,14 @@
       expandtab = true; # Pressing the TAB key will insert spaces instead of a TAB character
 
       wrap = false;
-
-      termguicolors = false;
     };
 
     ui = {
+      borders.enable = true;
       borders.globalStyle = "rounded";
       breadcrumbs.enable = true;
       illuminate.enable = true;
+      noice.enable = true; # Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
     };
 
     presence = {
