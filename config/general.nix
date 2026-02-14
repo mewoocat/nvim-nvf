@@ -84,7 +84,7 @@
     };
 
     theme = {
-      enable = true;
+      enable = false;
       name = "rose-pine";
       style = "moon";
     };
@@ -142,7 +142,7 @@
     };
 
     hideSearchHighlight = true;
-    lineNumberMode = "relative";
+    lineNumberMode = "relNumber";
     searchCase = "ignore";
     syntaxHighlighting = true; # investigate
 
@@ -237,13 +237,6 @@
         --vim.g.mapleader = " " -- Set leader to space
       '';
       optionsScript = ''
-        --vim.opt.wrap = false
-        --vim.opt.clipboard = "unnamedplus" -- External clipboard support
-        --vim.opt.number = true
-        --vim.opt.laststatus = 0 -- Never show status line
-        --vim.opt.relativenumber = true
-        --vim.opt.mouse = ""
-
         -- Tab config
         --vim.opt.tabstop = 4 -- A TAB character looks like 2 spaces
         --vim.opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
