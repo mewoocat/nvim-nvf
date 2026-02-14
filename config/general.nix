@@ -121,6 +121,7 @@
       json.enable = true;
       qml.enable = true;
       yaml.enable = true;
+      rust.enable = true;
     };
 
     clipboard = {
