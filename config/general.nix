@@ -84,7 +84,7 @@
     };
 
     theme = {
-      enable = false;
+      enable = true;
       name = "rose-pine";
       style = "moon";
     };
