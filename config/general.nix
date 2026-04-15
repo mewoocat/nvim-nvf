@@ -37,6 +37,7 @@
         '';
         once = true;
       }
+      /*
       {
         desc = "Sets indent for nix files";
         event = ["BufEnter"];
@@ -54,6 +55,7 @@
         '';
         once = true;
       }
+      */
     ];
 
     binds = {
@@ -156,7 +158,7 @@
 
 
     spellcheck = {
-      enable = true;
+      enable = false;
     };
 
     hideSearchHighlight = true;
@@ -268,11 +270,5 @@
       '';
     };
 
-    extraPlugins = with pkgs.vimPlugins; {   
-      web-devicons = {
-        package = nvim-web-devicons;
-        setup = '''';
-      };
-    };
   };
 }
