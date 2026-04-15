@@ -1,7 +1,25 @@
 {pkgs, lib, ...}: {
 # Configure nvim
   config.vim = {
-    autocomplete.nvim-cmp.enable = true;
+    /*
+    autocomplete.nvim-cmp = {
+      enable = true;
+      sourcePlugins = [];
+      sources = {
+        treesitter = lib.mkForce null;
+        buffer = null; #buffer = "[Buffer]";
+        nvim-cmp = null;
+        path = "[Path]";
+      };
+    };
+    */
+    
+    autocomplete.blink-cmp = {
+      enable = true;
+      setupOpts.signature.enabled = true;
+      sourcePlugins.emoji.enable = true;
+    };
+
     autopairs.nvim-autopairs.enable = true;
 
     autocmds = [
@@ -84,14 +102,14 @@
     };
 
     theme = {
-      enable = true;
+      enable = false;
       name = "rose-pine";
       style = "moon";
     };
 
     lsp = {
       enable = true;
-      lspSignature.enable = true;
+      #lspSignature.enable = true;
       lspconfig.enable = true;
       inlayHints.enable = true;
       lspkind.enable = true;
@@ -108,10 +126,10 @@
       enableFormat = true;
       enableTreesitter = true;
 
-      nix.enable = true;
+      #nix.enable = true;
       clang.enable = true; # C/C++
       ts.enable = true; # JS/TS
-      markdown.enable = true;
+      #markdown.enable = true; # Annoying warnings
       html.enable = true;
       lua.enable = true;
       bash.enable = true;
