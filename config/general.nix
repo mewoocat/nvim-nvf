@@ -210,10 +210,13 @@
         }
         */
         # Make live_grep_args availble to be called via a keymap
+        # Doesn't use the vimgrep_arguments
+        /*
         {
           name = "live_grep_args";
           packages = [ pkgs.vimPlugins.telescope-live-grep-args-nvim ];
         }
+        */
       ];
     };
 
@@ -231,7 +234,7 @@
       normal = {
           # Note the ":" is used to invoke the command
           "<leader>e".action =":Neotree toggle right<cr>";
-          "<leader>fg".action =":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>";
+          #"<leader>fg".action =":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>";
       };
     };
     # There's also vim.keymaps
