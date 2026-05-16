@@ -157,7 +157,6 @@
       mapLeader = " "; # Set leader to space
     };
 
-
     spellcheck = {
       enable = false;
     };
@@ -185,9 +184,22 @@
         };
         defaults = {
           color_devicons = true;
+          vimgrep_arguments = [
+            "${pkgs.ripgrep}/bin/rg"
+            "--color=never"
+            "--no-heading"
+            "--with-filename"
+            "--line-number"
+            "--column"
+            "--smart-case"
+            "--hidden"
+            "--no-ignore"
+            "--fixed-strings" # Read query literally
+          ];
         };
       };
       extensions = [
+        /*
         {
           name = "fzf";
           packages = [pkgs.vimPlugins.telescope-fzf-native-nvim];
@@ -197,6 +209,15 @@
             };
           };
         }
+        */
+        # Make live_grep_args availble to be called via a keymap
+        # Doesn't use the vimgrep_arguments
+        /*
+        {
+          name = "live_grep_args";
+          packages = [ pkgs.vimPlugins.telescope-live-grep-args-nvim ];
+        }
+        */
       ];
     };
 
@@ -212,7 +233,9 @@
     # Key mapping
     maps = {
       normal = {
-          "<leader>e".action =":Neotree toggle right<cr>"; # Note the ":" is used to invoke the command
+          # Note the ":" is used to invoke the command
+          "<leader>e".action =":Neotree toggle right<cr>";
+          #"<leader>fg".action =":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>";
       };
     };
     # There's also vim.keymaps
