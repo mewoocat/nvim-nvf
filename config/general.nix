@@ -117,6 +117,7 @@
       lspkind.enable = true;
       lightbulb.enable = true;
       nvim-docs-view.enable = true;
+      trouble.enable = true;
     }; 
 
     minimap = {
