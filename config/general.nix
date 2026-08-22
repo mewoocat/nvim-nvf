@@ -104,9 +104,9 @@
     };
 
     theme = {
-      enable = false;
-      name = "rose-pine";
-      style = "moon";
+      enable = true;
+      name = "oxocarbon"; # favs: mellow, oxocarbon, everforest
+      style = "dark";
     };
 
     lsp = {
