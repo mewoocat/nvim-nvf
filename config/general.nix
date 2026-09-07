@@ -104,9 +104,9 @@
     };
 
     theme = {
-      enable = false;
-      name = "rose-pine";
-      style = "moon";
+      enable = true;
+      name = "tokyonight";
+      style = "night";
     };
 
     lsp = {
@@ -121,7 +121,7 @@
     }; 
 
     minimap = {
-      codewindow.enable = true; # <leader>mm toggles
+      #codewindow.enable = true; # <leader>mm toggles ... doesn't work anymore
     };
 
     languages = {
@@ -131,7 +131,7 @@
 
       #nix.enable = true;
       clang.enable = true; # C/C++
-      ts.enable = true; # JS/TS
+      #ts.enable = true; # JS/TS
       #markdown.enable = true; # Annoying warnings
       html.enable = true;
       lua.enable = true;
