@@ -105,8 +105,8 @@
 
     theme = {
       enable = true;
-      name = "tokyonight";
-      style = "night";
+      name = "oxocarbon"; # favs: mellow, oxocarbon, everforest
+      style = "dark";
     };
 
     lsp = {
@@ -129,7 +129,7 @@
       enableFormat = true;
       enableTreesitter = true;
 
-      #nix.enable = true;
+      nix.enable = true;
       clang.enable = true; # C/C++
       #ts.enable = true; # JS/TS
       #markdown.enable = true; # Annoying warnings
