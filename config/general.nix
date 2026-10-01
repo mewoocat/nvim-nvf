@@ -23,6 +23,7 @@
     autopairs.nvim-autopairs.enable = true;
 
     autocmds = [
+      /*
       {
         desc = "Sets default indent";
         event = ["BufEnter"];
@@ -37,6 +38,7 @@
         '';
         once = true;
       }
+      */
       /*
       {
         desc = "Sets indent for nix files";
@@ -93,12 +95,12 @@
 
     treesitter = {
       grammars = with pkgs; [
-        vimPlugins.nvim-treesitter-parsers.qmljs
+        #vimPlugins.nvim-treesitter-parsers.qmljs
       ];
     };
 
     visuals = {
-      indent-blankline.enable = true;
+      #indent-blankline.enable = true;
       nvim-scrollbar.enable = true;
       nvim-web-devicons.enable = true;
     };
@@ -111,13 +113,14 @@
 
     lsp = {
       enable = true;
-      #lspSignature.enable = true;
+      lspSignature.enable = false;
       lspconfig.enable = true;
       inlayHints.enable = true;
       lspkind.enable = true;
       lightbulb.enable = true;
       nvim-docs-view.enable = true;
       trouble.enable = true;
+      formatOnSave = true;
     }; 
 
     minimap = {
@@ -131,7 +134,7 @@
 
       nix.enable = true;
       clang.enable = true; # C/C++
-      #ts.enable = true; # JS/TS
+      typescript.enable = true; # JS/TS
       #markdown.enable = true; # Annoying warnings
       html.enable = true;
       lua.enable = true;
@@ -140,7 +143,7 @@
       elixir.enable = true;
       csharp.enable = true;
       json.enable = true;
-      qml.enable = true;
+      qml.enable = false; # WARNING: This can cause auto intenting to break!
       yaml.enable = true;
       rust.enable = true;
     };
@@ -253,6 +256,7 @@
       enable = true;
     };
 
+    /*
     options = {
       # Set indent size
       shiftwidth = 2; # Number of spaces inserted when indenting
@@ -262,6 +266,7 @@
 
       wrap = false;
     };
+    */
 
     ui = {
       borders.enable = true;
