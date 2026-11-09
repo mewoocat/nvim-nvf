@@ -1,5 +1,9 @@
-{pkgs, lib, ...}: {
-# Configure nvim
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  # Configure nvim
   config.vim = {
     /*
     autocomplete.nvim-cmp = {
@@ -13,7 +17,7 @@
       };
     };
     */
-    
+
     autocomplete.blink-cmp = {
       enable = true;
       setupOpts.signature.enabled = true;
@@ -121,7 +125,7 @@
       nvim-docs-view.enable = true;
       trouble.enable = true;
       formatOnSave = true;
-    }; 
+    };
 
     minimap = {
       #codewindow.enable = true; # <leader>mm toggles ... doesn't work anymore
@@ -155,7 +159,7 @@
       };
       registers = "unnamedplus"; # To Always use the system clipboard
     };
-    
+
     globals = {
       mapLeader = " "; # Set leader to space
     };
@@ -236,9 +240,9 @@
     # Key mapping
     maps = {
       normal = {
-          # Note the ":" is used to invoke the command
-          "<leader>e".action =":Neotree toggle right<cr>";
-          #"<leader>fg".action =":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>";
+        # Note the ":" is used to invoke the command
+        "<leader>e".action = ":Neotree toggle right<cr>";
+        #"<leader>fg".action =":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>";
       };
     };
     # There's also vim.keymaps
@@ -256,22 +260,21 @@
       enable = true;
     };
 
-    /*
-    options = {
+    options = let
+      indentSize = 2;
+    in {
       # Set indent size
-      shiftwidth = 2; # Number of spaces inserted when indenting
-      tabstop = 2; # A TAB character looks like 2 spaces
-      softtabstop = 2; # Number of spaces inserted instead of a TAB character
+      shiftwidth = indentSize; # Number of spaces inserted when indenting
+      tabstop = indentSize; # A TAB character looks like 2 spaces
+      softtabstop = indentSize; # Number of spaces inserted instead of a TAB character
       expandtab = true; # Pressing the TAB key will insert spaces instead of a TAB character
 
       wrap = false;
     };
-    */
 
     ui = {
       borders.enable = true;
       borders.globalStyle = "rounded";
-      breadcrumbs.enable = true;
       illuminate.enable = true;
       noice.enable = true; # Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
     };
@@ -280,24 +283,21 @@
       neocord.enable = true;
     };
 
-    #startPlugins = ["neopywal"];
-    luaConfigRC = {
-      globalsScript = ''
-        --vim.g.mapleader = " " -- Set leader to space
-      '';
-      optionsScript = ''
-        -- Tab config
-        --vim.opt.tabstop = 4 -- A TAB character looks like 2 spaces
-        --vim.opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
-        --vim.opt.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
-        --vim.opt.shiftwidth = 4 -- Number of spaces inserted when indenting
+    luaConfigPost = ''
+    '';
 
-        -- QML lsp setup
+    #startPlugins = ["neopywal"];
+
+    # Each attr in this set represents group of lua config that will be inserted at an arbitray position in
+    # the resulting "init.lua".
+    luaConfigRC = {
+      # QML lsp setup
+      qmlls = ''
+
         vim.lsp.config['qmlls'] = {
           cmd = {"${pkgs.qt6.qtdeclarative}/bin/qmlls", "-E"}
         }
       '';
     };
-
   };
 }

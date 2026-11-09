@@ -9,9 +9,12 @@
       flake = false;
     };
   };
-  
 
-  outputs = { nixpkgs, nvf, ... }: let
+  outputs = {
+    nixpkgs,
+    nvf,
+    ...
+  }: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
 
@@ -24,8 +27,7 @@
       ];
       inherit pkgs;
     };
-
-  in{  
+  in {
     # Set default flake output to custom nvim package
     # This package is a wrapped version of the nvim package
     packages."x86_64-linux".default = customNeovim.neovim;
