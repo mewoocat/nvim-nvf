@@ -104,7 +104,7 @@
     };
 
     visuals = {
-      #indent-blankline.enable = true;
+      indent-blankline.enable = true;
       nvim-scrollbar.enable = true;
       nvim-web-devicons.enable = true;
     };
